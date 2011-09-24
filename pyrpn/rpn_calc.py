@@ -83,11 +83,9 @@ class rpn_calc:
 
 	def perform_other_operation(self, op):
 		x = self._stack.pop()
-		
-		try:
-			#If the method is defined in math eval it and append the result to the stack
-			self._stack.append(eval("math." + op + "(x)"))
-		except Exception as e:
+	
+		attribute = getattr(math, op, False)
+		if 	not(attribute):
 			if op[0].upper() == "D":
 				#Don't do anything drop the lowest item on the stack
 				x = 0
@@ -97,7 +95,9 @@ class rpn_calc:
 				#The operation isn't supported, so put the old value back on the stack.
 				print "Unknown Operation"
 				self._stack.append(x)
-			
+		else:
+			self._stack.append(eval("math." + op + "(x)"))
+
 
 	def parse_input(self, line):
 		line = line.rstrip()
@@ -112,23 +112,14 @@ class rpn_calc:
 				self._stack.append(val)
 			except ValueError:
 				#The input op wasn't a number
-				try:
-					val = eval("math." + op)
-					try:
-						#If the input op is a constant defined in math this will succeed
-						#otherwise the conversion to a float of a method defined in math
-						#will throw a TypeError
-						constant = float(val)
-						self._stack.append(constant)
-					except TypeError:						
-						#The op is a method defined in math
-						self.perform_operation(op)
-
-				except Exception as e:
-					#The op wasn't defined in math so it is either one of the ops the 
-					#program allows, or an unknown operation, but that is up to
-					#the operation handler to figure out
+				attribute = getattr(math, op, False)
+				if not(attribute):
 					self.perform_operation(op)
+				else:
+					if type(attribute) == type(float()):
+						self._stack.append(attribute)
+					else:
+						self.perform_operation(op)
 
 	def run_calc(self):
 		while True:
