@@ -22,7 +22,7 @@ import android.view.ViewConfiguration;
  * 
  */
 public class AndroidPlotView extends View {
-	@SuppressWarnings("unused")
+	
 	private static final String TAG = "AndroidPlotView";
 
 	List<AndroidPlot> apList;
