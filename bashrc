@@ -18,6 +18,12 @@ alias vi=gvim
 alias ls='ls -F --color'
 alias cls='clear'
 
+#project specific bashrcs
+for i in ~/development/*; do
+  if [ -e $i/.bashrc ]; then
+    source $i/.bashrc
+  fi
+done
 
 #Prompt
 export TERM=xterm-256color
