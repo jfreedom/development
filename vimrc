@@ -12,7 +12,6 @@ set columns=120
 set lines=53
 colorscheme desert
 set diffopt="iwhite,filler"
-syntax on
 set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
 
@@ -29,6 +28,8 @@ augroup vimrc_filetype
   autocmd FileType python call s:MyPySettings()
   autocmd Filetype c call s:MyCSettings()
   autocmd FileType cpp call s:MyCSettings()
+  autocmd FileType bash,sh call s:MyBashSettings()
+  autocmd Filetype make call s:MyMakeSettings()
 augroup end
 
 function! s:MyPySettings()
@@ -45,3 +46,13 @@ function! s:MyCSettings()
   map - ?[{#][^p]<CR>zf%<CR>:noh<CR>k
   map + zo
 endfunction  
+
+function! s:MyBashSettings()
+  map - j?function.*{<CR>zf%<CR>
+  map + zo
+endfunction
+
+function! s:MyMakeSettings()
+  set noexpandtab
+  set tabstop=4
+endfunction
