@@ -2,6 +2,7 @@
 shopt -s cdable_vars
 shopt -s cmdhist
 shopt -s histappend
+complete -cf sudo
 
 
 #history
@@ -14,7 +15,7 @@ export PATH=$PATH:$HOME/bin/ssh
 export PATH=$PATH:$HOME/bin
 
 
-alias vi=gvim
+alias vi=vim
 alias ls='ls -F --color'
 alias cls='clear'
 
@@ -42,4 +43,4 @@ NORMAL=$(tput sgr0)
 BLINK=$(tput blink)
 REVERSE=$(tput smso)
 UNDERLINE=$(tput smul)
-export PS1="\[${CYAN}\]\u\[${NORMAL}\]@\[${YELLOW}\]\h:\[${NORMAL}\]\W\$ "
+export PS1="\[${CYAN}\]\u\[${NORMAL}\]@\[${GREEN}\]\h:\[${YELLOW}\]\W\\[$NORMAL\]$ "

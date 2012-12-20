@@ -7,9 +7,8 @@ set nowrap
 set tabstop=2
 set shiftwidth=2
 set expandtab
+set mouse=a
 nnoremap <CR> :noh<CR><CR>
-set columns=120
-set lines=53
 colorscheme desert
 set diffopt="iwhite,filler"
 set noerrorbells visualbell t_vb=
