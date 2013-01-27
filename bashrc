@@ -45,4 +45,4 @@ NORMAL=$(tput sgr0)
 BLINK=$(tput blink)
 REVERSE=$(tput smso)
 UNDERLINE=$(tput smul)
-export PS1="\[${CYAN}\]\u\[${NORMAL}\]@\[${GREEN}\]\h:\[${YELLOW}${BRIGHT}\]\W\\[$NORMAL\]$ "
+export PS1="\[${CYAN}\]\u\[${NORMAL}\]@\[${GREEN}\]\h:\[${YELLOW}${BRIGHT}\]\W\[$NORMAL\]$ "
