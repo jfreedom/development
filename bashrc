@@ -9,6 +9,8 @@ complete -cf sudo
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 export HISTFILESIZE=100000
 export HISTCONTROL=ignoredups:erasedups
+bind '"\e[A": history-search-backward'
+bind '"\e[B": history-search-forward'
 
 #path
 export PATH=$PATH:$HOME/bin/ssh
@@ -43,4 +45,4 @@ NORMAL=$(tput sgr0)
 BLINK=$(tput blink)
 REVERSE=$(tput smso)
 UNDERLINE=$(tput smul)
-export PS1="\[${CYAN}\]\u\[${NORMAL}\]@\[${GREEN}\]\h:\[${YELLOW}\]\W\\[$NORMAL\]$ "
+export PS1="\[${CYAN}\]\u\[${NORMAL}\]@\[${GREEN}\]\h:\[${YELLOW}${BRIGHT}\]\W\\[$NORMAL\]$ "
