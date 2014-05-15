@@ -1,1 +1,1 @@
-[bashrc](bashrc)
+[bashrc](bashrc#L10)
